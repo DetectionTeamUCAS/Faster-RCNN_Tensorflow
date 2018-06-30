@@ -132,7 +132,9 @@ def train():
         threads = tf.train.start_queue_runners(sess, coord)
 
         summary_path = os.path.join(cfgs.SUMMARY_PATH, cfgs.VERSION)
-        tools.mkdir(summary_path)
+        # tools.mkdir(summary_path)
+        if not os.path.exists(summary_path):
+            os.makedirs(summary_path)
         summary_writer = tf.summary.FileWriter(summary_path, graph=sess.graph)
 
         for step in range(cfgs.MAX_ITERATION):
@@ -169,7 +171,7 @@ def train():
 
                 save_dir = os.path.join(cfgs.TRAINED_CKPT, cfgs.VERSION)
                 if not os.path.exists(save_dir):
-                    os.mkdir(save_dir)
+                    os.makedirs(save_dir)
 
                 save_ckpt = os.path.join(save_dir, 'voc_' + str(global_stepnp) + 'model.ckpt')
                 saver.save(sess, save_ckpt)
