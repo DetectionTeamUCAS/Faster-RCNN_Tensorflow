@@ -25,12 +25,6 @@ import json
 os.environ["CUDA_VISIBLE_DEVICES"] = cfgs.GPU_GROUP
 
 
-
-
-
-
-
-
 def eval_with_plac(det_net, imgId_list, coco, out_json_root, draw_imgs=False):
 
     # 1. preprocess img
@@ -128,9 +122,6 @@ def eval_with_plac(det_net, imgId_list, coco, out_json_root, draw_imgs=False):
             del resized_img
             del raw_img
             tools.view_bar('{} image cost {}s'.format(imgid, (end - start)), i + 1, len(imgId_list))
-
-
-
 
 
 def eval(num_imgs):

@@ -8,22 +8,18 @@ import os, sys
 import tensorflow as tf
 import time
 import cv2
-import pickle
+import argparse
 import numpy as np
+sys.path.append("../")
 
 from data.io.image_preprocess import short_side_resize_for_inference_data
 from libs.configs import cfgs
 from libs.networks import build_whole_network
-from libs.val_libs import voc_eval
 from libs.box_utils import draw_box_in_img
-from libs.label_name_dict.pascal_dict import LABEl_NAME_MAP, NAME_LABEL_MAP
 from help_utils import tools
 
-sys.path.append("../")
-os.environ["CUDA_VISIBLE_DEVICES"] = cfgs.GPU_GROUP
 
-
-def detect(det_net, real_test_imgname_list):
+def detect(det_net, inference_save_path, real_test_imgname_list):
 
     # 1. preprocess img
     img_plac = tf.placeholder(dtype=tf.uint8, shape=[None, None, 3])  # is RGB. not GBR
@@ -75,25 +71,55 @@ def detect(det_net, real_test_imgname_list):
                                                                                 labels=show_categories,
                                                                                 scores=show_scores)
             nake_name = a_img_name.split('/')[-1]
-            cv2.imwrite(cfgs.INFERENCE_SAVE_PATH + '/' + nake_name,
+            # print (inference_save_path + '/' + nake_name)
+            cv2.imwrite(inference_save_path + '/' + nake_name,
                         final_detections[:, :, ::-1])
 
             tools.view_bar('{} image cost {}s'.format(a_img_name, (end - start)), i + 1, len(real_test_imgname_list))
 
 
-def eval(test_dir):
+def inference(test_dir, inference_save_path):
 
-    test_imgname_list = [os.path.join(test_dir, img_name) for img_name in os.listdir(test_dir)]
+    test_imgname_list = [os.path.join(test_dir, img_name) for img_name in os.listdir(test_dir)
+                                                          if img_name.endswith(('.jpg', '.png', '.jpeg', '.tif', '.tiff'))]
+    assert len(test_imgname_list) != 0, 'test_dir has no imgs there.' \
+                                        ' Note that, we only support img format of (.jpg, .png, and .tiff) '
 
     faster_rcnn = build_whole_network.DetectionNetwork(base_network_name=cfgs.NET_NAME,
                                                        is_training=False)
-    detect(det_net=faster_rcnn, real_test_imgname_list=test_imgname_list)
+    detect(det_net=faster_rcnn, inference_save_path=inference_save_path, real_test_imgname_list=test_imgname_list)
 
 
+def parse_args():
+    """
+    Parse input arguments
+    """
+    parser = argparse.ArgumentParser(description='TestImgs...U need provide the test dir')
+    parser.add_argument('--data_dir', dest='data_dir',
+                        help='data path',
+                        default='demos', type=str)
+    parser.add_argument('--save_dir', dest='save_dir',
+                        help='demo imgs to save',
+                        default='inference_results', type=str)
+    parser.add_argument('--GPU', dest='GPU',
+                        help='gpu id ',
+                        default='0', type=str)
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(1)
+
+    args = parser.parse_args()
+
+    return args
 if __name__ == '__main__':
 
-    # eval('/home/yjr/PycharmProjects/Faster-RCNN_TF/tools/inference_image')
-    eval('/home/yjr/code/tf-faster-rcnn/data/demo')
+    args = parse_args()
+    print('Called with args:')
+    print(args)
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.GPU
+    inference(args.data_dir,
+              inference_save_path=args.save_dir)
 
 
 

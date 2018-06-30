@@ -214,7 +214,7 @@ def voc_eval(detpath, annopath, test_imgid_list, cls_name, ovthresh=0.5,
   return rec, prec, ap
 
 
-def do_python_eval_yjr(test_imgid_list):
+def do_python_eval_yjr(test_imgid_list, test_annotation_path):
   AP_list = []
   import matplotlib.pyplot as plt
   import matplotlib.colors as colors
@@ -226,7 +226,7 @@ def do_python_eval_yjr(test_imgid_list):
     recall, precision, AP = voc_eval(detpath=os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION),
                                      test_imgid_list=test_imgid_list,
                                      cls_name=cls,
-                                     annopath=cfgs.test_annotate_path)
+                                     annopath=test_annotation_path)
     AP_list += [AP]
     print("cls : {}|| Recall: {} || Precison: {}|| AP: {}".format(cls, recall[-1], precision[-1], AP))
     plt.plot(recall, precision, label=cls, color=color_list[index])
@@ -237,7 +237,7 @@ def do_python_eval_yjr(test_imgid_list):
   print("mAP is : {}".format(np.mean(AP_list)))
 
 
-def voc_evaluate_detections(all_boxes, test_imgid_list):
+def voc_evaluate_detections(all_boxes, test_annotation_path, test_imgid_list):
   '''
 
   :param all_boxes: is a list. each item reprensent the detections of a img.
@@ -246,9 +246,11 @@ def voc_evaluate_detections(all_boxes, test_imgid_list):
   Note that: if none detections in this img. that the detetions is : []
   :return:
   '''
+  test_imgid_list = [item.split('.')[0] for item in test_imgid_list]
+
   write_voc_results_file_yjr(all_boxes, test_imgid_list=test_imgid_list,
                              det_save_dir=os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION))
-  do_python_eval_yjr(test_imgid_list)
+  do_python_eval_yjr(test_imgid_list, test_annotation_path=test_annotation_path)
 
 
 

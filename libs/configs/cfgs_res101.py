@@ -3,6 +3,51 @@ from __future__ import division, print_function, absolute_import
 import os
 import tensorflow as tf
 
+'''
+cls : sheep|| Recall: 0.904958677686 || Precison: 0.00100514505758|| AP: 0.796842233528
+GLib-GIO-Message: 18:08:55.441: Using the 'memory' GSettings backend.  Your settings will not be saved or shared with other applications.
+____________________
+cls : horse|| Recall: 0.954022988506 || Precison: 0.00154345380331|| AP: 0.89332778065
+____________________
+cls : bicycle|| Recall: 0.916913946588 || Precison: 0.00131796700391|| AP: 0.838940379355
+____________________
+cls : bottle|| Recall: 0.754797441365 || Precison: 0.00155802315909|| AP: 0.59409144003
+____________________
+cls : cow|| Recall: 0.94262295082 || Precison: 0.00104145441373|| AP: 0.856768981614
+____________________
+cls : sofa|| Recall: 0.958158995816 || Precison: 0.0011761684643|| AP: 0.765890977118
+____________________
+cls : bus|| Recall: 0.943661971831 || Precison: 0.000950628786553|| AP: 0.842320499598
+____________________
+cls : dog|| Recall: 0.965235173824 || Precison: 0.00214377850045|| AP: 0.88499630618
+____________________
+cls : cat|| Recall: 0.932960893855 || Precison: 0.00149788547006|| AP: 0.884974245992
+____________________
+cls : person|| Recall: 0.877650176678 || Precison: 0.0167097655839|| AP: 0.815442624142
+____________________
+cls : train|| Recall: 0.90780141844 || Precison: 0.00116778731673|| AP: 0.7916043079
+____________________
+cls : diningtable|| Recall: 0.888349514563 || Precison: 0.00100377925633|| AP: 0.726617005258
+____________________
+cls : aeroplane|| Recall: 0.870175438596 || Precison: 0.00111434631008|| AP: 0.802605776982
+____________________
+cls : car|| Recall: 0.9367194005 || Precison: 0.00492263800889|| AP: 0.884210759442
+____________________
+cls : pottedplant|| Recall: 0.69375 || Precison: 0.00151877257635|| AP: 0.475030352567
+____________________
+cls : tvmonitor|| Recall: 0.912337662338 || Precison: 0.00127649522564|| AP: 0.79810054976
+____________________
+cls : chair|| Recall: 0.804232804233 || Precison: 0.00275795747846|| AP: 0.528492403027
+____________________
+cls : bird|| Recall: 0.886710239651 || Precison: 0.00183182331682|| AP: 0.807009364722
+____________________
+cls : boat|| Recall: 0.851711026616 || Precison: 0.00101167033999|| AP: 0.599356235684
+____________________
+cls : motorbike|| Recall: 0.904615384615 || Precison: 0.00127213801399|| AP: 0.818659097267
+____________________
+mAP is : 0.770264066041
+This version is for Res101
+'''
 
 # ------------------------------------------------
 VERSION = 'FasterRCNN_20180517'
@@ -20,8 +65,8 @@ SAVE_WEIGHTS_INTE = 10000
 
 SUMMARY_PATH = ROO_PATH + '/output/summary'
 TEST_SAVE_PATH = ROO_PATH + '/tools/test_result'
-INFERENCE_IMAGE_PATH = ROO_PATH + '/tools/inference_image'
-INFERENCE_SAVE_PATH = ROO_PATH + '/tools/inference_results'
+# INFERENCE_IMAGE_PATH = ROO_PATH + '/tools/inference_image'
+# INFERENCE_SAVE_PATH = ROO_PATH + '/tools/inference_results'
 
 if NET_NAME.startswith("resnet"):
     weights_name = NET_NAME
@@ -111,6 +156,3 @@ FAST_RCNN_MINIBATCH_SIZE = 256  # if is -1, that is train with OHEM
 FAST_RCNN_POSITIVE_RATE = 0.25
 
 ADD_GTBOXES_TO_TRAIN = False
-
-
-

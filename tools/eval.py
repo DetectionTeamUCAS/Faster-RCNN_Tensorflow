@@ -10,23 +10,21 @@ import time
 import cv2
 import pickle
 import numpy as np
+sys.path.append("../")
 
 from data.io.image_preprocess import short_side_resize_for_inference_data
 from libs.configs import cfgs
 from libs.networks import build_whole_network
 from libs.val_libs import voc_eval
 from libs.box_utils import draw_box_in_img
-from libs.label_name_dict.pascal_dict import LABEl_NAME_MAP, NAME_LABEL_MAP
+import argparse
 from help_utils import tools
 
-sys.path.append("../")
-os.environ["CUDA_VISIBLE_DEVICES"] = cfgs.GPU_GROUP
 
-
-def eval_with_plac(det_net, real_test_imgname_list, draw_imgs=False):
+def eval_with_plac(det_net, real_test_imgname_list, img_root, draw_imgs=False):
 
     # 1. preprocess img
-    img_plac = tf.placeholder(dtype=tf.uint8, shape=[None, None, 3])  # is RGB. not GBR
+    img_plac = tf.placeholder(dtype=tf.uint8, shape=[None, None, 3])  # is RGB. not BGR
     img_batch = tf.cast(img_plac, tf.float32)
 
     img_batch = short_side_resize_for_inference_data(img_tensor=img_batch,
@@ -58,8 +56,7 @@ def eval_with_plac(det_net, real_test_imgname_list, draw_imgs=False):
         all_boxes = []
         for i, a_img_name in enumerate(real_test_imgname_list):
 
-            raw_img = cv2.imread(os.path.join('/home/yjr/DataSet/VOC/VOC_test/VOC2007/JPEGImages',
-                                              a_img_name + '.jpg'))
+            raw_img = cv2.imread(os.path.join(img_root, a_img_name))
             raw_h, raw_w = raw_img.shape[0], raw_img.shape[1]
 
             start = time.time()
@@ -79,6 +76,9 @@ def eval_with_plac(det_net, real_test_imgname_list, draw_imgs=False):
                                                                                     boxes=show_boxes,
                                                                                     labels=show_categories,
                                                                                     scores=show_scores)
+                if not os.path.exists(cfgs.TEST_SAVE_PATH):
+                    os.makedirs(cfgs.TEST_SAVE_PATH)
+
                 cv2.imwrite(cfgs.TEST_SAVE_PATH + '/' + a_img_name + '.jpg',
                             final_detections[:, :, ::-1])
 
@@ -103,17 +103,19 @@ def eval_with_plac(det_net, real_test_imgname_list, draw_imgs=False):
 
         save_dir = os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION)
         if not os.path.exists(save_dir):
-            os.mkdir(save_dir)
+            os.makedirs(save_dir)
         fw1 = open(os.path.join(save_dir, 'detections.pkl'), 'w')
         pickle.dump(all_boxes, fw1)
 
 
-def eval(num_imgs):
+def eval(num_imgs, eval_dir, annotation_dir, showbox):
 
-    with open('/home/yjr/DataSet/VOC/VOC_test/VOC2007/ImageSets/Main/aeroplane_test.txt') as f:
-        all_lines = f.readlines()
-    test_imgname_list = [a_line.split()[0].strip() for a_line in all_lines]
+    # with open('/home/yjr/DataSet/VOC/VOC_test/VOC2007/ImageSets/Main/aeroplane_test.txt') as f:
+    #     all_lines = f.readlines()
+    # test_imgname_list = [a_line.split()[0].strip() for a_line in all_lines]
 
+    test_imgname_list = [item for item in os.listdir(eval_dir)
+                              if item.endswith(('.jpg', 'jpeg', '.png', '.tif', '.tiff'))]
     if num_imgs == np.inf:
         real_test_imgname_list = test_imgname_list
     else:
@@ -122,22 +124,53 @@ def eval(num_imgs):
     faster_rcnn = build_whole_network.DetectionNetwork(base_network_name=cfgs.NET_NAME,
                                                        is_training=False)
     eval_with_plac(det_net=faster_rcnn, real_test_imgname_list=real_test_imgname_list,
-                   draw_imgs=True)
+                   img_root=eval_dir,
+                   draw_imgs=showbox)
 
     save_dir = os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION)
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
     with open(os.path.join(save_dir, 'detections.pkl')) as f:
         all_boxes = pickle.load(f)
 
         print(len(all_boxes))
 
     voc_eval.voc_evaluate_detections(all_boxes=all_boxes,
+                                     test_annotation_path=annotation_dir,
                                      test_imgid_list=real_test_imgname_list)
 
+def parse_args():
 
+    parser = argparse.ArgumentParser('evaluate the result with Pascal2007 stdand')
+
+    parser.add_argument('--eval_imgs', dest='eval_imgs',
+                        help='evaluate imgs dir ',
+                        default='/home/yjr/DataSet/VOC/VOC_test/VOC2007/JPEGImages', type=str)
+    parser.add_argument('--annotation_dir', dest='test_annotation_dir',
+                        help='the dir save annotations',
+                        default='/home/yjr/DataSet/VOC/VOC_test/VOC2007/Annotations', type=str)
+    parser.add_argument('--showbox', dest='showbox',
+                        help='whether show detecion results when evaluation',
+                        default=False, type=bool)
+    parser.add_argument('--GPU', dest='GPU',
+                        help='gpu id',
+                        default='0', type=str)
+    parser.add_argument('--eval_num', dest='eval_num',
+                        help='the num of eval imgs',
+                        default=np.inf, type=int)
+    args = parser.parse_args()
+    return args
 if __name__ == '__main__':
 
-    eval(np.inf) # use np.inf to test all the imgs. use 10 to test 10 imgs.
-#
+    args = parse_args()
+    print(20*"--")
+    print(args)
+    print(20*"--")
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.GPU
+    eval(args.eval_num, # use np.inf to test all the imgs. use 10 to test 10 imgs.
+         eval_dir=args.eval_imgs,
+         annotation_dir=args.test_annotation_dir,
+         showbox=args.showbox)
 
 
 
