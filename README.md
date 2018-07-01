@@ -32,7 +32,7 @@ This project is completed by [YangXue](https://github.com/yangxue0827) and [Yang
 │   ├── VOCdevkit_train
 │       ├── Annotation
 │       ├── JPEGImages
-    ├── VOCdevkit_test
+│   ├── VOCdevkit_test
 │       ├── Annotation
 │       ├── JPEGImages
 ```
@@ -72,7 +72,7 @@ python convert_data_to_tfrecord.py --VOC_dir='/PATH/TO/VOCdevkit/VOCdevkit_train
 2、compile
 ```  
 cd $PATH_ROOT/libs/box_utils/cython_utils
-python set.py build_ext --inplace
+python setup.py build_ext --inplace
 ```
 
 3、train
