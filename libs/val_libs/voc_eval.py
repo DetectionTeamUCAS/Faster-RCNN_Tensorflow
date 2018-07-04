@@ -12,10 +12,10 @@ import os
 import pickle
 import numpy as np
 
-from libs.label_name_dict.pascal_dict import NAME_LABEL_MAP
+from libs.label_name_dict.label_dict import NAME_LABEL_MAP
 from libs.configs import cfgs
 
-def write_voc_results_file_yjr(all_boxes, test_imgid_list, det_save_dir):
+def write_voc_results_file(all_boxes, test_imgid_list, det_save_dir):
   '''
 
   :param all_boxes: is a list. each item reprensent the detections of a img.
@@ -214,7 +214,7 @@ def voc_eval(detpath, annopath, test_imgid_list, cls_name, ovthresh=0.5,
   return rec, prec, ap
 
 
-def do_python_eval_yjr(test_imgid_list, test_annotation_path):
+def do_python_eval(test_imgid_list, test_annotation_path):
   AP_list = []
   import matplotlib.pyplot as plt
   import matplotlib.colors as colors
@@ -248,9 +248,9 @@ def voc_evaluate_detections(all_boxes, test_annotation_path, test_imgid_list):
   '''
   test_imgid_list = [item.split('.')[0] for item in test_imgid_list]
 
-  write_voc_results_file_yjr(all_boxes, test_imgid_list=test_imgid_list,
-                             det_save_dir=os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION))
-  do_python_eval_yjr(test_imgid_list, test_annotation_path=test_annotation_path)
+  write_voc_results_file(all_boxes, test_imgid_list=test_imgid_list,
+                         det_save_dir=os.path.join(cfgs.EVALUATE_DIR, cfgs.VERSION))
+  do_python_eval(test_imgid_list, test_annotation_path=test_annotation_path)
 
 
 

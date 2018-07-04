@@ -9,7 +9,7 @@ import cv2
 import os, sys
 import tensorflow as tf
 import xml.etree.cElementTree as ET
-from libs.label_name_dict.pascal_dict import NAME_LABEL_MAP
+from libs.label_name_dict.label_dict import NAME_LABEL_MAP
 
 
 tf.app.flags.DEFINE_string('VOC_dir', '/home/yjr/DataSet/VOC', 'Voc dir ')

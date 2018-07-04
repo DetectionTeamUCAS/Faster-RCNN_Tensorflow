@@ -24,7 +24,6 @@ def anchor_target_layer(
     img_h, img_w = img_shape[1], img_shape[2]
     gt_boxes = gt_boxes[:, :-1]  # remove class label
 
-
     # allow boxes to sit over the edge by a small amount
     _allowed_border = 0
 
