@@ -101,9 +101,9 @@ def convert_pascal(dataset_name):
         }))
         writer.write(example.SerializeToString())
         if i % 100 == 0:
-            print '{} {} imgs convert over'.format(i, dataset_name)
+            print('{} {} imgs convert over'.format(i, dataset_name))
     print(20*"@")
-    print 'all {} imgs convert over, the num is {}'.format(dataset_name, i)
+    print('all {} imgs convert over, the num is {}'.format(dataset_name, i))
 
 if __name__ == '__main__':
     # w, h, gtboxes = read_xml_target_box_and_label('/home/yjr/DataSet/VOC/VOCtrain_val/VOC2007/Annotations/000005.xml')

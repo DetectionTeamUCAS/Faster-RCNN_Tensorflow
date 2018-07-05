@@ -53,29 +53,29 @@ NET_NAME = 'MobilenetV2' #'MobilenetV2'
 ADD_BOX_IN_TENSORBOARD = True
 
 # ---------------------------------------- System_config
-ROO_PATH = os.path.abspath('../')
+ROOT_PATH = os.path.abspath('../')
 print (20*"++--")
-print (ROO_PATH)
+print (ROOT_PATH)
 GPU_GROUP = "0"
 SHOW_TRAIN_INFO_INTE = 10
 SMRY_ITER = 100
 SAVE_WEIGHTS_INTE = 10000
 
-SUMMARY_PATH = ROO_PATH + '/output/summary'
-TEST_SAVE_PATH = ROO_PATH + '/tools/test_result'
-INFERENCE_IMAGE_PATH = ROO_PATH + '/tools/inference_image'
-INFERENCE_SAVE_PATH = ROO_PATH + '/tools/inference_results'
+SUMMARY_PATH = ROOT_PATH + '/output/summary'
+TEST_SAVE_PATH = ROOT_PATH + '/tools/test_result'
+INFERENCE_IMAGE_PATH = ROOT_PATH + '/tools/inference_image'
+INFERENCE_SAVE_PATH = ROOT_PATH + '/tools/inference_results'
 
 if NET_NAME.startswith("resnet"):
     weights_name = NET_NAME
 elif NET_NAME.startswith("MobilenetV2"):
     weights_name = "mobilenet/mobilenet_v2_1.0_224"
+else:
+    raise Exception('net name must in [resnet_v1_101, resnet_v1_50, MobilenetV2]')
 
-PRETRAINED_CKPT = ROO_PATH + '/data/pretrained_weights/' + weights_name + '.ckpt'
-TRAINED_CKPT = os.path.join(ROO_PATH, 'output/trained_weights')
-
-EVALUATE_DIR = ROO_PATH + '/output/evaluate_result_pickle/'
-test_annotate_path = '/home/yjr/DataSet/VOC/VOC_test/VOC2007/Annotations'
+PRETRAINED_CKPT = ROOT_PATH + '/data/pretrained_weights/' + weights_name + '.ckpt'
+TRAINED_CKPT = os.path.join(ROOT_PATH, 'output/trained_weights')
+EVALUATE_DIR = ROOT_PATH + '/output/evaluate_result_pickle/' + VERSION
 
 # ------------------------------------------ Train config
 RESTORE_FROM_RPN = False
