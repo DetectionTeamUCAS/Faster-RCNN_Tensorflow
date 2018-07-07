@@ -1,0 +1,1 @@
+Download [trained model](https://github.com/DetectionTeamUCAS/Models/tree/master/Faster-RCNN_Tensorflow) by this project, put it to $PATH_ROOT/output/trained_weights.

@@ -56,8 +56,8 @@ ADD_BOX_IN_TENSORBOARD = True
 
 # ---------------------------------------- System_config
 ROOT_PATH = os.path.abspath('../')
-print (20*"++--")
-print (ROOT_PATH)
+print(20*"++--")
+print(ROOT_PATH)
 GPU_GROUP = "0"
 SHOW_TRAIN_INFO_INTE = 10
 SMRY_ITER = 100
@@ -92,9 +92,8 @@ FAST_RCNN_CLASSIFICATION_LOSS_WEIGHT = 1.0
 RPN_SIGMA = 3.0
 FASTRCNN_SIGMA = 1.0
 
-
 MUTILPY_BIAS_GRADIENT = None   # 2.0  # if None, will not multipy
-GRADIENT_CLIPPING_BY_NORM = None   #10.0  if None, will not clip
+GRADIENT_CLIPPING_BY_NORM = None   # 10.0  if None, will not clip
 
 EPSILON = 1e-5
 MOMENTUM = 0.9
@@ -114,7 +113,6 @@ BATCH_SIZE = 1
 INITIALIZER = tf.random_normal_initializer(mean=0.0, stddev=0.01)
 BBOX_INITIALIZER = tf.random_normal_initializer(mean=0.0, stddev=0.001)
 WEIGHT_DECAY = 0.00004 if NET_NAME.startswith('Mobilenet') else 0.0001
-
 
 # ---------------------------------------------Anchor config
 BASE_ANCHOR_SIZE_LIST = [256]  # can be modified

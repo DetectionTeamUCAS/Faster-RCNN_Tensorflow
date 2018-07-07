@@ -46,6 +46,12 @@ This project is completed by [YangXue](https://github.com/yangxue0827) and [Yang
 │       ├── JPEGImages
 ```
 
+## Compile
+```  
+cd $PATH_ROOT/libs/box_utils/cython_utils
+python setup.py build_ext --inplace
+```
+
 ## Demo(available)
 
 **Select a configuration file in the folder ($PATH_ROOT/libs/configs/) and copy its contents into cfgs.py, then download the corresponding [weights](https://github.com/DetectionTeamUCAS/Models/tree/master/Faster-RCNN_Tensorflow).**      
@@ -67,7 +73,12 @@ python eval.py --eval_imgs='/PATH/TO/IMAGES/'
 
 ## Train
 
-1、make tfrecord
+1、If you want to train your own data, please note:      
+(1)|Modify parameters (such as CLASS_NUM, DATASET_NAME, etc.) in $PATH_ROOT/libs/configs/cfgs.py     
+(2) Add category information in $PATH_ROOT/libs/label_name_dict/lable_dict.py     
+(3) Add data_name to line 76 of $PATH_ROOT/data/io/read_tfrecord.py     
+
+2、make tfrecord
 ```  
 cd $PATH_ROOT/data/io/  
 python convert_data_to_tfrecord.py --VOC_dir='/PATH/TO/VOCdevkit/VOCdevkit_train/' 
@@ -76,13 +87,7 @@ python convert_data_to_tfrecord.py --VOC_dir='/PATH/TO/VOCdevkit/VOCdevkit_train
                                    --save_name='train' 
                                    --img_format='.jpg' 
                                    --dataset='pascal'
-```
-
-2、compile
-```  
-cd $PATH_ROOT/libs/box_utils/cython_utils
-python setup.py build_ext --inplace
-```
+```     
 
 3、train
 ```  
