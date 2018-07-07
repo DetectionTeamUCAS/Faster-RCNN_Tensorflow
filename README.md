@@ -73,10 +73,12 @@ python eval.py --eval_imgs='/PATH/TO/IMAGES/'
 
 ## Train
 
-1、If you want to train your own data, please note:      
-(1)|Modify parameters (such as CLASS_NUM, DATASET_NAME, etc.) in $PATH_ROOT/libs/configs/cfgs.py     
+1、If you want to train your own data, please note:  
+```     
+(1) Modify parameters (such as CLASS_NUM, DATASET_NAME, etc.) in $PATH_ROOT/libs/configs/cfgs.py     
 (2) Add category information in $PATH_ROOT/libs/label_name_dict/lable_dict.py     
-(3) Add data_name to line 76 of $PATH_ROOT/data/io/read_tfrecord.py     
+(3) Add data_name to line 76 of $PATH_ROOT/data/io/read_tfrecord.py 
+```     
 
 2、make tfrecord
 ```  

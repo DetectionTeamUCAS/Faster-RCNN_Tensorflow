@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7ee9a66-3710-409a-a705-a04ce96b7c93" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/pretrained_weights/mobilenet" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/pretrained_weights/resnet_v1_101.ckpt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/pretrained_weights/resnet_v1_50.ckpt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/box_utils/draw_box_in_img.py" afterPath="$PROJECT_DIR$/libs/box_utils/draw_box_in_img.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py" afterPath="$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/configs/cfgs.py" afterPath="$PROJECT_DIR$/libs/configs/cfgs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/label_name_dict/label_dict.py" afterPath="$PROJECT_DIR$/libs/label_name_dict/label_dict.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/label_name_dict/remote_sensing_dict.py" afterPath="$PROJECT_DIR$/libs/label_name_dict/remote_sensing_dict.py" />
     </list>
     <ignored path="Faster-RCNN_Tensorflow.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +68,28 @@
       <file leaf-file-name="label_dict.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/label_name_dict/label_dict.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1379">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="14" />
+            <state relative-caret-position="807">
+              <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="coco_dict.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/label_name_dict/coco_dict.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="remote_sensing_dict.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libs/label_name_dict/remote_sensing_dict.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="728">
+              <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -86,8 +98,18 @@
       <file leaf-file-name="draw_box_in_img.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/libs/box_utils/draw_box_in_img.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+            <state relative-caret-position="520">
+              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inference_for_coco.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/inference_for_coco.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="373">
+              <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -96,38 +118,8 @@
       <file leaf-file-name="show_box_in_tensor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="9" column="58" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="proposal_opr.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/detection_oprations/proposal_opr.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1196">
-              <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cfgs_res50.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/configs/cfgs_res50.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4264">
-              <caret line="84" column="24" selection-start-line="84" selection-start-column="24" selection-end-line="84" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cfgs_res101.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libs/configs/cfgs_res101.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3536">
-              <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+            <state relative-caret-position="373">
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -155,6 +147,7 @@
         <option value="$PROJECT_DIR$/libs/label_name_dict/label_dict.py" />
         <option value="$PROJECT_DIR$/libs/box_utils/draw_box_in_img.py" />
         <option value="$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py" />
+        <option value="$PROJECT_DIR$/libs/label_name_dict/remote_sensing_dict.py" />
       </list>
     </option>
   </component>
@@ -614,8 +607,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="3026" height="1946" extended-state="7" />
-    <editor active="false" />
+    <frame x="-13" y="-13" width="3026" height="1946" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -653,24 +646,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libs/configs/cfgs_res101.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3536">
-          <caret line="70" column="33" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/networks/build_whole_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17836">
-          <caret line="361" column="82" selection-start-line="361" selection-start-column="70" selection-end-line="361" selection-end-column="82" />
-          <folding>
-            <element signature="e#24#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/val_libs/voc_eval.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12532">
@@ -916,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/label_name_dict/coco_dict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libs/configs/cfgs_pascal_2.py" />
     <entry file="file://$PROJECT_DIR$/libs/configs/cfgs_pascal_3.py" />
     <entry file="file://$PROJECT_DIR$/tools/eval.py">
@@ -1011,26 +979,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py">
+    <entry file="file://$PROJECT_DIR$/tools/inference_for_coco.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="58" />
+        <state relative-caret-position="373">
+          <caret line="106" column="42" selection-start-line="106" selection-start-column="42" selection-end-line="106" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/label_name_dict/remote_sensing_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/label_name_dict/label_dict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1379">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="14" />
+        <state relative-caret-position="807">
+          <caret line="73" column="21" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/label_name_dict/coco_dict.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/box_utils/show_box_in_tensor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/box_utils/draw_box_in_img.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state relative-caret-position="520">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
           <folding />
         </state>
       </provider>
