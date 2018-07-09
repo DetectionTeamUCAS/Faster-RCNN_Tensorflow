@@ -82,7 +82,7 @@ else:
 
 PRETRAINED_CKPT = ROOT_PATH + '/data/pretrained_weights/' + weights_name + '.ckpt'
 TRAINED_CKPT = os.path.join(ROOT_PATH, 'output/trained_weights')
-EVALUATE_DIR = ROOT_PATH + '/output/evaluate_result_pickle/' + VERSION
+EVALUATE_DIR = ROOT_PATH + '/output/evaluate_result_pickle/'
 
 # ------------------------------------------ Train config
 RESTORE_FROM_RPN = False
