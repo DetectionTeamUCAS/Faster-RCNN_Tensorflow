@@ -333,7 +333,6 @@ class DetectionNetwork(object):
             rpn_cls_score = tf.reshape(rpn_cls_score, [-1, 2])
             rpn_cls_prob = slim.softmax(rpn_cls_score, scope='rpn_cls_prob')
 
-
         # 3. generate_anchors
         featuremap_height, featuremap_width = tf.shape(feature_to_cropped)[1], tf.shape(feature_to_cropped)[2]
         featuremap_height = tf.cast(featuremap_height, tf.float32)

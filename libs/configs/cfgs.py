@@ -55,29 +55,29 @@ NET_NAME = 'resnet_v1_101' #'MobilenetV2'
 ADD_BOX_IN_TENSORBOARD = True
 
 # ---------------------------------------- System_config
-ROO_PATH = os.path.abspath('../')
-print (20*"++--")
-print (ROO_PATH)
+ROOT_PATH = os.path.abspath('../')
+print(20*"++--")
+print(ROOT_PATH)
 GPU_GROUP = "0"
 SHOW_TRAIN_INFO_INTE = 10
 SMRY_ITER = 100
 SAVE_WEIGHTS_INTE = 10000
 
-SUMMARY_PATH = ROO_PATH + '/output/summary'
-TEST_SAVE_PATH = ROO_PATH + '/tools/test_result'
-# INFERENCE_IMAGE_PATH = ROO_PATH + '/tools/inference_image'
-# INFERENCE_SAVE_PATH = ROO_PATH + '/tools/inference_results'
+SUMMARY_PATH = ROOT_PATH + '/output/summary'
+TEST_SAVE_PATH = ROOT_PATH + '/tools/test_result'
+# INFERENCE_IMAGE_PATH = ROOT_PATH + '/tools/inference_image'
+# INFERENCE_SAVE_PATH = ROOT_PATH + '/tools/inference_results'
 
 if NET_NAME.startswith("resnet"):
     weights_name = NET_NAME
 elif NET_NAME.startswith("MobilenetV2"):
     weights_name = "mobilenet/mobilenet_v2_1.0_224"
+else:
+    raise Exception('net name must in [resnet_v1_101, resnet_v1_50, MobilenetV2]')
 
-PRETRAINED_CKPT = ROO_PATH + '/data/pretrained_weights/' + weights_name + '.ckpt'
-TRAINED_CKPT = os.path.join(ROO_PATH, 'output/trained_weights')
-
-EVALUATE_DIR = ROO_PATH + '/output/evaluate_result_pickle/'
-test_annotate_path = '/home/yjr/DataSet/VOC/VOC_test/VOC2007/Annotations'
+PRETRAINED_CKPT = ROOT_PATH + '/data/pretrained_weights/' + weights_name + '.ckpt'
+TRAINED_CKPT = os.path.join(ROOT_PATH, 'output/trained_weights')
+EVALUATE_DIR = ROOT_PATH + '/output/evaluate_result_pickle/'
 
 # ------------------------------------------ Train config
 RESTORE_FROM_RPN = False
@@ -92,9 +92,8 @@ FAST_RCNN_CLASSIFICATION_LOSS_WEIGHT = 1.0
 RPN_SIGMA = 3.0
 FASTRCNN_SIGMA = 1.0
 
-
 MUTILPY_BIAS_GRADIENT = None   # 2.0  # if None, will not multipy
-GRADIENT_CLIPPING_BY_NORM = None   #10.0  if None, will not clip
+GRADIENT_CLIPPING_BY_NORM = None   # 10.0  if None, will not clip
 
 EPSILON = 1e-5
 MOMENTUM = 0.9
@@ -114,7 +113,6 @@ BATCH_SIZE = 1
 INITIALIZER = tf.random_normal_initializer(mean=0.0, stddev=0.01)
 BBOX_INITIALIZER = tf.random_normal_initializer(mean=0.0, stddev=0.001)
 WEIGHT_DECAY = 0.00004 if NET_NAME.startswith('Mobilenet') else 0.0001
-
 
 # ---------------------------------------------Anchor config
 BASE_ANCHOR_SIZE_LIST = [256]  # can be modified

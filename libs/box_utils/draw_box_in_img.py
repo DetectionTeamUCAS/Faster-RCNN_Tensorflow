@@ -10,13 +10,11 @@ import cv2
 from libs.configs import cfgs
 
 import libs.label_name_dict.coco_dict as coco_dict
-import libs.label_name_dict.pascal_dict as pascal_dict
+import libs.label_name_dict.label_dict as label_dict
 if cfgs.DATASET_NAME == 'coco':
-    LABEl_NAME_MAP = coco_dict.LABEL_NAME_MAP
-elif cfgs.DATASET_NAME == 'pascal':
-    LABEl_NAME_MAP = pascal_dict.LABEl_NAME_MAP
+    LABEL_NAME_MAP = coco_dict.LABEL_NAME_MAP
 else:
-    raise ('name erro')
+    LABEL_NAME_MAP = label_dict.LABEL_NAME_MAP
 
 NOT_DRAW_BOXES = 0
 ONLY_DRAW_BOXES = -1
@@ -91,7 +89,7 @@ def draw_label_with_scores(draw_obj, box, label, score, color):
     draw_obj.rectangle(xy=[x, y-10, x + 60, y],
                        fill=color)
 
-    txt = LABEl_NAME_MAP[label] + ':' + str(round(score, 2))
+    txt = LABEL_NAME_MAP[label] + ':' + str(round(score, 2))
     draw_obj.text(xy=(x, y-10),
                   text=txt,
                   fill='black',

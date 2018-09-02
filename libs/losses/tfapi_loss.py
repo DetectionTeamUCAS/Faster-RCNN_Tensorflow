@@ -143,5 +143,5 @@ def sum_ohem_loss(cls_score, label, bbox_pred, bbox_targets,
     #
     # return cls_loss_ohem, loc_loss_ohem
 
-    raise NotImplementedError('yjr_ohem not implemented')
+    raise NotImplementedError('ohem not implemented')
 
