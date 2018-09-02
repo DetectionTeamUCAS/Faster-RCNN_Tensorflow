@@ -3,7 +3,7 @@
 ## Abstract
 This is a tensorflow re-implementation of [Faster R-CNN: Towards Real-Time ObjectDetection with Region Proposal Networks](https://arxiv.org/abs/1506.01497).     
 
-This project is completed by [YangXue](https://github.com/yangxue0827) and [YangJirui](https://github.com/yangJirui). Some relevant projects ([R<sup>2</sup>CNN](https://github.com/DetectionTeamUCAS/R2CNN_Faster-RCNN_Tensorflow)) based on this code.
+This project is completed by [YangXue](https://github.com/yangxue0827) and [YangJirui](https://github.com/yangJirui). Some relevant projects ([R<sup>2</sup>CNN](https://github.com/DetectionTeamUCAS/R2CNN_Faster-RCNN_Tensorflow)) and ([RRPN](https://github.com/DetectionTeamUCAS/RRPN_Faster-RCNN_Tensorflow)) based on this code.
 
 ## Train on VOC 2007 trainval and test on VOC 2007 test (PS. This project also support coco training.)     
 ![1](voc_2007.gif)
